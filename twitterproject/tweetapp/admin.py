@@ -2,7 +2,8 @@ from django.contrib import admin
 from .models import User, Tweets
 from django import forms
 
-class UserAdminForm(forms.modelForm):
+
+class UserAdminForm(forms.ModelForm):
     def __init__(self,*args,**kwargs):
         super(UserAdminForm,self).__init__(*args,**kwargs)
 
@@ -15,18 +16,7 @@ class UserAdminForm(forms.modelForm):
     def save(self,commit=True):
         return super(UserAdminForm,self).save(commit=commit)
 
-class TweetsAdminForm(forms.modelForm):
-    def __init__(self,*args,**kwargs):
-        super(TweetsAdminForm,self).__init__(*args,**kwargs)
 
-    def clean(self):
-        name = self.cleaned_data.get('tweet_length')
-        if len(name) > 140:
-            raise forms.ValidationError('name is too big', code='error')
-        return self.cleaned_data
-
-    def save(self, commit=True):
-        return super(TweetsAdminForm,self).save(commit=commit)
 
 
 

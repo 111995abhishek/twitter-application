@@ -18,7 +18,7 @@ class User(models.Model):
 
 class Tweets(models.Model):
     user_name = models.ForeignKey(User, on_delete=models.CASCADE)
-    tweet_length=models.CharField()
+    tweet_length=models.CharField(max_length=140)
     time_of_tweet = models.TimeField()
     date_of_tweet = models.DateField()
 
