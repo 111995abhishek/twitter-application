@@ -18,12 +18,13 @@ class User(models.Model):
 
 class Tweets(models.Model):
     user_name = models.ForeignKey(User, on_delete=models.CASCADE)
+    tweet_length=models.CharField()
     time_of_tweet = models.TimeField()
     date_of_tweet = models.DateField()
 
     def __str__(self):
 
-        return str(self.time_of_tweet)+""+str(self.date_of_tweet)
+        return str(self.time_of_tweet)+""+str(self.date_of_tweet)+""+str(self.tweet_length)
 
 
 
